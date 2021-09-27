@@ -37,7 +37,7 @@ client = mqtt.Client("demoproject")
 client.on_connect = on_connect
 client.on_log=on_log
 # MQTT connection
-client.connect("localhost", 1883, 60)
+client.connect("127.0.0.1", 1883, 60)
 
 client.loop_start()
 while True:
