@@ -3,7 +3,8 @@ import time
 import schedule
 import json
 
-
+host="127.0.0.1"
+port=1883
 oneMinData=fiveMinData=thirtyMinData=[]
 Statistics={"oneMinAvg":None,"fiveMinAvg":None,"thirtyMinAvg":None}
 
@@ -85,7 +86,7 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 #Mqtt Connection
-client.connect("localhost", 1883, 60)
+client.connect(host, port, 60)
 
 
 # Event Scheduling

@@ -2,6 +2,8 @@ import paho.mqtt.client as mqtt
 import time
 import random
 
+host="127.0.0.1"
+port=1883
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     if rc==0:
@@ -33,11 +35,11 @@ def randomNumber(min,max):
 def sendMessage(topic,message):
     client.publish(topic,message,0,False)
 
-client = mqtt.Client("demoproject")
+client = mqtt.Client()
 client.on_connect = on_connect
 client.on_log=on_log
 # MQTT connection
-client.connect("127.0.0.1", 1883, 60)
+client.connect(host, port, 60)
 
 client.loop_start()
 while True:
