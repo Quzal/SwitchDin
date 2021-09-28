@@ -7,7 +7,7 @@ port=1883
 def on_connect(client, userdata, flags, rc):
     if rc==0:
         print("Connection successful")
-        client.subscribe("demoproject/statistics")
+        client.subscribe("demoproject/statistics")  
     elif rc==1:
         print("Connection refused - incorrect protocol version")
     elif rc==2:

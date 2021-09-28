@@ -24,7 +24,9 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for mqtt logs
 def on_log(client,userdata,level,buf):
-    print("log: "+buf)
+    # Uncomment to enable logs
+    # print("Task1 : (logs) "+buf) 
+    pass
 
 # Method to generate random numbers    
 def randomNumber(min,max):
@@ -34,6 +36,7 @@ def randomNumber(min,max):
 # Send Message Method
 def sendMessage(topic,message):
     client.publish(topic,message,0,False)
+    print("Task1: (Publish) "+str(message)+" on "+topic)
 
 client = mqtt.Client()
 client.on_connect = on_connect

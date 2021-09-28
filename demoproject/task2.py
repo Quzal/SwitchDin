@@ -29,7 +29,7 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
+    print("Task 2:  (Recieved) "+msg.payload.decode('utf-8', 'ignore')+" on "+msg.topic+" ")
     oneMinData.append(int(msg.payload))
     fiveMinData.append(int(msg.payload))
     thirtyMinData.append(int(msg.payload))
@@ -45,7 +45,6 @@ def OneMinAverage():
         average=average/len(oneMinData)
         average=round(average,2)
         del oneMinData[:]
-        print("One Minute Average"+str(average))
         Statistics["oneMinAvg"]=average;
         SendMessage("demoproject/statistics",Statistics)
     except:
@@ -80,6 +79,7 @@ def ThirtyMinAverage():
 def SendMessage(topic,data):
     data=json.dumps(data) # Coverting dict to json string
     client.publish(topic,data,0,False)
+    print("Task 2: (Publish) "+json.dumps(data)+" on "+topic)
 
 client = mqtt.Client()
 # Callbacks
